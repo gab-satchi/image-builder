@@ -16,7 +16,8 @@
     "vm_size": "",
     "cloudbase_init_url": "https://github.com/cloudbase/cloudbase-init/releases/download/{{user `cloudbase_init_version`}}/CloudbaseInitSetup_{{user `cloudbase_init_version` | replace_all `.` `_` }}_x64.msi",
     "wins_url": "https://github.com/rancher/wins/releases/download/v{{user `wins_version`}}/wins.exe",
-    "windows_updates_kb": null,
+    "windows_updates_kbs": null,
+    "windows_updates_categories": "SecurityUpdates,CriticalUpdates,UpdateRollups",
     "prepull": null,
     "windows_service_manager": null,
     "output_dir": "./output/{{user `build_version`}}"

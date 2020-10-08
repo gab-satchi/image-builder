@@ -18,12 +18,13 @@
     dest: '%TEMP%\nssm.zip'
   register: nssm
 
-- name: Machine Architeture
-  win_shell: '(get-wmiObject win32_processor).AddressWidth'
-  register: address_width
+- name: Unpack nssm 32bit
+  win_command: tar C {{ kubernetes_install_path }} -xvf {{ nssm.dest }} --strip-components 2 */win32/*.exe
+  when: is_64 == false
 
-- name: Unpack nssm
-  win_command: tar C {{ kubernetes_install_path }} -xvf {{ nssm.dest }} --strip-components 2 */win{{ address_width.stdout | trim }}/*.exe
+- name: Unpack nssm 64bit
+  win_command: tar C {{ kubernetes_install_path }} -xvf {{ nssm.dest }} --strip-components 2 */win64/*.exe
+  when: is_64 == true
 
 - name: Create kubelet start file for nssm
   win_template:

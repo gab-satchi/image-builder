@@ -28,29 +28,39 @@
       "vm_name": "{{user `build_version`}}",
       "vmdk_name": "{{user `build_version`}}",
       "output_directory": "{{user `output_dir`}}",
+      "guest_os_type": "{{user `local_guest_os_type`}}",
       "type": "vmware-iso",
       "version": "{{user `vmx_version`}}",
-      "CPUs": 2,
-      "RAM": 4096,
+      "cpus": 2,
+      "memory": 4096,
       "disk_size": 40960,
+      "disk_type_id": "{{user `disk_type_id`}}",
+      "disk_adapter_type": "sata",
       "boot_wait": "{{user `boot_wait`}}",
-      "guest_os_type": "{{user `guest_os_type`}}",
-      "iso_paths": [
-        "{{user `os_iso_path`}}",
-        "{{user `vmtools_iso_path`}}"
+      "iso_urls": [
+        "{{user `os_iso_url`}}", 
+        "{{user `vmtools_iso_url`}}"
       ],
-      "firmware": "bios",  
+      "iso_checksum": "{{user `iso_checksum` }}",  
       "floppy_files": [
-        "./packer/ova/windows/autounattend.xml"
+        "./packer/ova/windows/autounattend.xml",
+        "./packer/ova/windows/disable-network-discovery.cmd",
+        "./packer/ova/windows/disable-winrm.ps1",
+        "./packer/ova/windows/enable-winrm.ps1",
+        "./packer/ova/windows/install-vm-tools.cmd",
+        "./packer/ova/windows/shutdown-save.ps1",
+        "./packer/ova/windows/set-temp.ps1"
       ],
-      "NestedHV" : true,
       "communicator": "winrm",
       "winrm_username": "Administrator",
       "winrm_password": "S3cr3t0!",
       "winrm_timeout": "4h",
+      "shutdown_command": "C:/Windows/packer/PackerShutdown.bat",
+      "shutdown_timeout": "1h",
       "vmx_data": {
-        "ethernet0.networkName": "{{user `network`}}"
-      }
+        "numvcpus": "2",
+        "vhv.enable": "TRUE"
+      } 
     },
     {
       "type": "vsphere-iso",
@@ -141,7 +151,9 @@
       ]
     },
     {
-      "type": "windows-restart"
+      "type": "windows-restart",
+      "restart_command": "powershell \"& {(Get-WmiObject win32_operatingsystem).LastBootUpTime > C:\\ProgramData\\lastboot.txt; Restart-Computer -force}\"",
+      "restart_check_command": "powershell -command \"& {if ((get-content C:\\ProgramData\\lastboot.txt) -eq (Get-WmiObject win32_operatingsystem).LastBootUpTime) {Write-Output 'Sleeping for 600 seconds to wait for reboot'; start-sleep 600} else {Write-Output 'Reboot complete'}}\""
     },
     {
       "elevated_user": "Administrator",

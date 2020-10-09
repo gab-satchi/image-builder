@@ -44,6 +44,7 @@
 - name: Install Windows updates based on KB numbers
   win_updates:
     whitelist: "{{ windows_updates_kbs_numbers }}"
+    reboot: yes
   when: windows_updates_kbs_numbers|length > 0
 
 - name: Install Windows updates based on Categories

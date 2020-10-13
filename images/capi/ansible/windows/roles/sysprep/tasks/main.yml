@@ -64,6 +64,12 @@
   become_method: runas
   become_user: SYSTEM
 
+- name: Set SSH service startup mode to auto and ensure it is started
+  win_service:
+    name: sshd
+    start_mode: auto
+    state: started
+
 - name: Add required Windows Features
   win_feature:
     name:

@@ -80,6 +80,7 @@ deps-gce:
 deps-ova: ## Installs/checks dependencies for OVA builds
 deps-ova:
 	hack/ensure-ansible.sh
+	hack/ensure-ansible-windows.sh
 	hack/ensure-packer.sh
 	hack/ensure-goss.sh
 
@@ -373,7 +374,7 @@ build-node-ova-local-photon-3: ## Builds Photon 3 Node OVA w local hypervisor
 build-node-ova-local-rhel-7: ## Builds RHEL 7 Node OVA w local hypervisor
 build-node-ova-local-ubuntu-1804: ## Builds Ubuntu 18.04 Node OVA w local hypervisor
 build-node-ova-local-ubuntu-2004: ## Builds Ubuntu 20.04 Node OVA w local hypervisor
-build-node-ova-vsphere-windows-2019: ## Builds for Windows Server 2019 Node OVA w local hypervisor
+build-node-ova-local-windows-2019: ## Builds for Windows Server 2019 Node OVA w local hypervisor
 build-node-ova-local-all: $(NODE_OVA_LOCAL_BUILD_TARGETS) ## Builds all Node OVAs w local hypervisor
 build-haproxy-ova-local-photon-3: ## Builds Photon 3 HAProxy OVA w local hypervisor
 

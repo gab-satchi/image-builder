@@ -38,18 +38,20 @@
       "disk_adapter_type": "sata",
       "boot_wait": "{{user `boot_wait`}}",
       "iso_urls": [
-        "{{user `os_iso_url`}}", 
-        "{{user `vmtools_iso_url`}}"
+        "{{user `os_iso_url`}}"
       ],
       "iso_checksum": "{{user `iso_checksum` }}",  
       "floppy_files": [
         "./packer/ova/windows/autounattend.xml",
         "./packer/ova/windows/disable-network-discovery.cmd",
         "./packer/ova/windows/disable-winrm.ps1",
+        "./packer/ova/windows/install-pvscsi-drivers.ps1",
         "./packer/ova/windows/enable-winrm.ps1",
-        "./packer/ova/windows/install-vm-tools.cmd",
         "./packer/ova/windows/shutdown-save.ps1",
         "./packer/ova/windows/set-temp.ps1"
+      ],
+      "floppy_dirs": [
+        "./packer/ova/windows/pvscsi"
       ],
       "communicator": "winrm",
       "winrm_username": "Administrator",
@@ -119,9 +121,13 @@
         "./packer/ova/windows/disable-network-discovery.cmd",
         "./packer/ova/windows/disable-winrm.ps1",
         "./packer/ova/windows/enable-winrm.ps1",
+        "./packer/ova/windows/install-pvscsi-drivers.ps1",
         "./packer/ova/windows/install-vm-tools.cmd",
         "./packer/ova/windows/shutdown-save.ps1",
         "./packer/ova/windows/set-temp.ps1"
+      ],
+      "floppy_dirs": [
+        "./packer/ova/windows/pvscsi"
       ],
       "export": {
         "force": true,

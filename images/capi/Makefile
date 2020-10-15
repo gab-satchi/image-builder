@@ -172,7 +172,7 @@ CENTOS_VERSIONS			:=	centos-7
 PHOTON_VERSIONS			:=	photon-3
 RHEL_VERSIONS				:=	rhel-7
 UBUNTU_VERSIONS			:=	ubuntu-1804 ubuntu-2004
-WINDOWS_VERSIONS		:=  windows-2019
+WINDOWS_VERSIONS		:=  windows-2019 windows-2004
 
 PLATFORMS_AND_VERSIONS := $(CENTOS_VERSIONS) \
 	$(PHOTON_VERSIONS) \
@@ -375,6 +375,7 @@ build-node-ova-local-rhel-7: ## Builds RHEL 7 Node OVA w local hypervisor
 build-node-ova-local-ubuntu-1804: ## Builds Ubuntu 18.04 Node OVA w local hypervisor
 build-node-ova-local-ubuntu-2004: ## Builds Ubuntu 20.04 Node OVA w local hypervisor
 build-node-ova-local-windows-2019: ## Builds for Windows Server 2019 Node OVA w local hypervisor
+build-node-ova-local-windows-2004: ## Builds for Windows Server 2004 SAC Node OVA w local hypervisor
 build-node-ova-local-all: $(NODE_OVA_LOCAL_BUILD_TARGETS) ## Builds all Node OVAs w local hypervisor
 build-haproxy-ova-local-photon-3: ## Builds Photon 3 HAProxy OVA w local hypervisor
 
@@ -392,6 +393,7 @@ build-node-ova-vsphere-rhel-7: ## Builds RHEL 7 Node OVA and template on vSphere
 build-node-ova-vsphere-ubuntu-1804: ## Builds Ubuntu 18.04 Node OVA and template on vSphere
 build-node-ova-vsphere-ubuntu-2004: ## Builds Ubuntu 20.04 Node OVA and template on vSphere
 build-node-ova-vsphere-windows-2019: ## Builds for Windows Server 2019 and template on vSphere
+build-node-ova-vsphere-windows-2004: ## Builds for Windows Server 2004 SAC and template on vSphere
 build-node-ova-vsphere-all: $(NODE_OVA_VSPHERE_BUILD_TARGETS) ## Builds all Node OVAs and templates on vSphere
 build-haproxy-ova-vsphere-photon-3: ## Builds Photon 3 HAProxy OVA and template on vSphere
 
@@ -461,6 +463,7 @@ validate-node-ova-local-rhel-7: ## Validates RHEL 7 Node OVA Packer config w loc
 validate-node-ova-local-ubuntu-1804: ## Validates Ubuntu 18.04 Node OVA Packer config w local hypervisor
 validate-node-ova-local-ubuntu-2004: ## Validates Ubuntu 20.04 Node OVA Packer config w local hypervisor
 validate-node-ova-local-windows-2019: ## Validates Windows Server 2019 Node OVA Packer config w local hypervisor
+validate-node-ova-local-windows-2004: ## Validates Windows Server 2004 SAC Node OVA Packer config w local hypervisor
 validate-node-ova-local-all: $(NODE_OVA_LOCAL_VALIDATE_TARGETS) ## Validates all Node OVAs Packer config w local hypervisor
 validate-haproxy-ova-local-photon-3: ## Validates Photon 3 HAProxy OVA Packer config w local hypervisor
 

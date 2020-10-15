@@ -42,7 +42,7 @@
       ],
       "iso_checksum": "{{user `iso_checksum` }}",  
       "floppy_files": [
-        "./packer/ova/windows/autounattend.xml",
+        "./packer/ova/windows/{{user `distro_name`}}/autounattend.xml",
         "./packer/ova/windows/disable-network-discovery.cmd",
         "./packer/ova/windows/disable-winrm.ps1",
         "./packer/ova/windows/install-pvscsi-drivers.ps1",
@@ -117,7 +117,7 @@
 
 
       "floppy_files": [
-        "./packer/ova/windows/autounattend.xml",
+        "./packer/ova/windows/{{user `distro_name`}}/autounattend.xml",
         "./packer/ova/windows/disable-network-discovery.cmd",
         "./packer/ova/windows/disable-winrm.ps1",
         "./packer/ova/windows/enable-winrm.ps1",

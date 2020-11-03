@@ -30,13 +30,13 @@
 
 # configuration modified from https://github.com/cloudbase/windows-openstack-imaging-tools/tree/master/Examples/config/azure
 - name: Set up cloudbase-init unattend configuration 
-  win_copy:
+  win_template:
     src: cloudbase-init-unattend.conf
     dest: '%programfiles%\Cloudbase Solutions\Cloudbase-Init\conf\cloudbase-init-unattend.conf'
 
 # configuration modified from https://github.com/cloudbase/windows-openstack-imaging-tools/tree/master/Examples/config/azure
 - name: Set up cloudbase-init configuration 
-  win_copy:
+  win_template:
     src: cloudbase-init.conf
     dest: '%programfiles%\Cloudbase Solutions\Cloudbase-Init\conf\cloudbase-init.conf'
 
